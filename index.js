@@ -26,7 +26,7 @@ let messages = 0
 bot.on('message', async (ctx) => {
     const date = new Date()
     const formatDate = format(date, 'yyyy-MM-dd');
-    const birthDate = new Date('2024-01-01');
+    const birthDate = new Date('2025-01-01');
     const formatbirthDate = format(birthDate, 'yyyy-MM-dd')
     console.log(formatDate, formatbirthDate)
 
