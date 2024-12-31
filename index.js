@@ -33,7 +33,7 @@ bot.on('message', async (ctx) => {
 
     // mensaje antes de la fecha
     if (date < birthDate) {
-        const messages = 0
+        let messages = 0
         if (messages < 1) {
             ctx.sendMessage('Aún falta un poquito para tu cumpleaños, paciencia')
             messages++
@@ -46,7 +46,7 @@ bot.on('message', async (ctx) => {
 
     //mensaje el dia de la fehca
     if (formatDate == formatbirthDate) {
-        const message = 0
+        let message = 0
         if (message < 1) {
             const url = googleTTS.getAudioUrl('Feliz cumpleaños', {
                 lang: 'es',
@@ -71,7 +71,7 @@ bot.on('message', async (ctx) => {
     //mensaje despues de la fecha
 
     if (formatDate < format(new Date(2025, 1, 4), 'yyyy-MM-dd') && formatDate > format(new Date(2025, 1, 1), 'yyyy-MM-dd')) {
-        const messages = 0
+        let messages = 0
         if (messages < 1) {
             const response = await createResponse
             console.log(messages)
@@ -87,7 +87,7 @@ bot.on('message', async (ctx) => {
     // mensaje el día 04
 
     if (formatDate == format(new Date(2025, 1, 4), 'yyyy-MM-dd')) {
-        const messages = 0
+        let messages = 0
         if (messages < 1) {
             ctx.sendMessage('Hoy es sabado, quizás deberías ir pensando en un look para esta noche')
             messages++
@@ -101,7 +101,7 @@ bot.on('message', async (ctx) => {
     // mensaje el día 05
 
     if (formatDate == format(new Date(2025, 1, 5), 'yyyy-MM-dd')) {
-        const messages = 0
+        let messages = 0
         if (messages < 1) {
 
             ctx.sendMessage('Hoy es la cabalgata de reies, no tengo tiempo de darte mas pistas')
@@ -116,7 +116,7 @@ bot.on('message', async (ctx) => {
     // mensaje del día 5 al 10
 
     if (formatDate == format(new Date(2025, 1, 5), 'yyyy-MM-dd')) {
-        const messages = 0
+        let messages = 0
         if (messages < 1) {
             const response = await createResponse
             console.log(messages)
@@ -133,7 +133,7 @@ bot.on('message', async (ctx) => {
     // mensaje el día 10
 
     if (formatDate == format(new Date(2025, 1, 10), 'yyyy-MM-dd')) {
-        const messages = 0
+        let messages = 0
         if (messages < 1) {
             ctx.sendMessage('Esta tarde tienes una misión, preparar una maleta. En algún momento del día recibiras más instrucciones.')
             messages++
