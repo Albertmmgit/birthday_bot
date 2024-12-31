@@ -27,7 +27,7 @@ bot.start( (ctx) => {
  
     const welcomeMessage = `
     ¡Hola, ${ctx.chat.first_name || 'usuario'}! 👋
-    Bienvenida, ya falta poco para poder empezar el juego de tu cumpleaños. Cada vez que quieras pedirme algo debes escribir /pista .
+    Bienvenida, ya falta poco para poder empezar el juego de tu cumpleaños. Mañana escribeme y tendrás noticias mías .
     `;
 
     ctx.sendMessage(welcomeMessage)
