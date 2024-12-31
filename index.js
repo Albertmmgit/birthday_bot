@@ -41,9 +41,10 @@ bot.on('message', async (ctx) => {
     console.log(formatDate, formatbirthDate)
 
 
+    
     // mensaje antes de la fecha
     if (date < birthDate) {
-        let messages
+      
         if (messages < 1) {
             ctx.sendMessage('Aún falta un poquito para tu cumpleaños, paciencia')
             messages++
@@ -55,8 +56,8 @@ bot.on('message', async (ctx) => {
 
     //mensaje el dia de la fehca
     if (formatDate == formatbirthDate) {
-        let message
-        if (message < 1) {
+     
+        if (messages < 1) {
             const url = googleTTS.getAudioUrl('Feliz cumpleaños', {
                 lang: 'es',
                 slow: false,
@@ -65,7 +66,7 @@ bot.on('message', async (ctx) => {
             ctx.replyWithAudio(url);
             ctx.sendMessage('A partir de hoy empieza el juego. Para conocer más sobre las sorpesas que te esperan este mes tienes derecho a una pregunta cada día hasta que se te indique que el juego a finalizado')
             messages++
-        } else if (message < 2 && message > 0) {
+        } else if (messages < 2 && messages > 0) {
             const response = await createResponse()
             console.log(messages)
             ctx.reply(response);
@@ -80,7 +81,7 @@ bot.on('message', async (ctx) => {
     //mensaje despues de la fecha
 
     if (formatDate < format(new Date(2025, 1, 4), 'yyyy-MM-dd') && formatDate > format(new Date(2025, 1, 1), 'yyyy-MM-dd')) {
-        let messages
+       
         if (messages < 1) {
             const response = await createResponse()
             console.log(messages)
@@ -96,7 +97,7 @@ bot.on('message', async (ctx) => {
     // mensaje el día 04
 
     if (formatDate == format(new Date(2025, 1, 4), 'yyyy-MM-dd')) {
-        let messages
+
         if (messages < 1) {
             ctx.sendMessage('Hoy es sabado, quizás deberías ir pensando en un look para esta noche')
             messages++
@@ -110,7 +111,7 @@ bot.on('message', async (ctx) => {
     // mensaje el día 05
 
     if (formatDate == format(new Date(2025, 1, 5), 'yyyy-MM-dd')) {
-        let messages
+       
         if (messages < 1) {
 
             ctx.sendMessage('Hoy es la cabalgata de reies, no tengo tiempo de darte mas pistas')
@@ -125,7 +126,7 @@ bot.on('message', async (ctx) => {
     // mensaje del día 5 al 10
 
     if (formatDate == format(new Date(2025, 1, 5), 'yyyy-MM-dd')) {
-        let messages
+      
         if (messages < 1) {
             const response = await createResponse()
             console.log(messages)
@@ -142,7 +143,7 @@ bot.on('message', async (ctx) => {
     // mensaje el día 10
 
     if (formatDate == format(new Date(2025, 1, 10), 'yyyy-MM-dd')) {
-        let messages
+        
         if (messages < 1) {
             ctx.sendMessage('Esta tarde tienes una misión, preparar una maleta. En algún momento del día recibiras más instrucciones.')
             messages++
