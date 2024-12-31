@@ -51,7 +51,7 @@ bot.on('message', async (ctx) => {
         }
     } else {
         const response = await limitRespomse()
-        ctx.reply(response);
+        ctx.sendMessage(response);
     }
 
     //mensaje el dia de la fehca
