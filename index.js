@@ -34,20 +34,45 @@ bot.command(/\/start/, (ctx) => {
 });
 
 bot.on('message', async (ctx) => {
+
     const date = new Date()
     const formatDate = format(date, 'yyyy-MM-dd');
     const birthDate = new Date('2025-01-01');
     const formatbirthDate = format(birthDate, 'yyyy-MM-dd')
     console.log(formatDate, formatbirthDate)
 
+    
+
+    const chatId = ctx.chat.id;
+
+
+
+    if (!userMessages[chatId]) {
+        userMessages[chatId] = {
+            messages: 0,
+            date: formatDate,
+        };
+    }
+
+
+    if (userMessages[chatId].date !== formatDate) {
+        userMessages[chatId].messages = 0;
+        userMessages[chatId].date = formatDate;
+    }
+
+    const userData = userMessages[chatId];
+
+
+
+
 
     
     // mensaje antes de la fecha
-    if (date < birthDate) {
+    if (formatDate < birthDate) {
       
-        if (messages < 1) {
+        if (userData.messages < 1) {
             ctx.sendMessage('Aún falta un poquito para tu cumpleaños, paciencia')
-            messages++
+            userData.messages++
         }  else {
         const response = await limitRespomse()
         ctx.sendMessage(response);
@@ -57,7 +82,7 @@ bot.on('message', async (ctx) => {
     //mensaje el dia de la fehca
     if (formatDate == formatbirthDate) {
      
-        if (messages < 1) {
+        if (userData.messages < 1) {
             const url = googleTTS.getAudioUrl('Feliz cumpleaños', {
                 lang: 'es',
                 slow: false,
@@ -65,12 +90,12 @@ bot.on('message', async (ctx) => {
             })
             ctx.replyWithAudio(url);
             ctx.sendMessage('A partir de hoy empieza el juego. Para conocer más sobre las sorpesas que te esperan este mes tienes derecho a una pregunta cada día hasta que se te indique que el juego a finalizado')
-            messages++
-        } else if (messages < 2 && messages > 0) {
+            userData.messages++
+        } else if (userData.messages < 2 && userData.messages > 0) {
             const response = await createResponse()
             console.log(messages)
             ctx.reply(response);
-            messages++
+            userData.messages++
         } else {
             const response = await limitRespomse()
             console.log(messages)
@@ -82,11 +107,11 @@ bot.on('message', async (ctx) => {
 
     if (formatDate < format(new Date(2025, 1, 4), 'yyyy-MM-dd') && formatDate > format(new Date(2025, 1, 1), 'yyyy-MM-dd')) {
        
-        if (messages < 1) {
+        if (userData.messages < 1) {
             const response = await createResponse()
             console.log(messages)
             ctx.reply(response);
-            messages++
+            userData.messages++
         } else {
             const response = await limitRespomse()
             console.log(messages)
@@ -98,9 +123,9 @@ bot.on('message', async (ctx) => {
 
     if (formatDate == format(new Date(2025, 1, 4), 'yyyy-MM-dd')) {
 
-        if (messages < 1) {
+        if (userData.messages < 1) {
             ctx.sendMessage('Hoy es sabado, quizás deberías ir pensando en un look para esta noche')
-            messages++
+            userData.messages++
         } else {
             const response = await limitRespomse()
             console.log(messages)
@@ -112,10 +137,10 @@ bot.on('message', async (ctx) => {
 
     if (formatDate == format(new Date(2025, 1, 5), 'yyyy-MM-dd')) {
        
-        if (messages < 1) {
+        if (userData.messages < 1) {
 
             ctx.sendMessage('Hoy es la cabalgata de reies, no tengo tiempo de darte mas pistas')
-            messages++
+            userData.messages++
         } else {
             const response = await limitRespomse()
             console.log(messages)
@@ -127,11 +152,11 @@ bot.on('message', async (ctx) => {
 
     if (formatDate == format(new Date(2025, 1, 5), 'yyyy-MM-dd')) {
       
-        if (messages < 1) {
+        if (userData.messages < 1) {
             const response = await createResponse()
             console.log(messages)
             ctx.reply(response);
-            messages++
+            userData.messages++
 
         } else {
             const response = await limitRespomse()
@@ -144,9 +169,9 @@ bot.on('message', async (ctx) => {
 
     if (formatDate == format(new Date(2025, 1, 10), 'yyyy-MM-dd')) {
         
-        if (messages < 1) {
+        if (userData.messages < 1) {
             ctx.sendMessage('Esta tarde tienes una misión, preparar una maleta. En algún momento del día recibiras más instrucciones.')
-            messages++
+            userData.messages++
 
         } else {
             const response = await limitRespomse()
