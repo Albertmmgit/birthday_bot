@@ -30,7 +30,7 @@ bot.command(/\/start/, (ctx) => {
     Bienvenida, ya falta poco para poder empezar el juego de tu cumpleaños. Cada vez que quieras pedirme algo debes escribir /pista .
     `;
 
-    ctx.sendMessage(welcomeMessage)
+    ctx.reply(welcomeMessage)
 });
 
 bot.on('message', async (ctx) => {
@@ -71,11 +71,11 @@ bot.on('message', async (ctx) => {
     if (formatDate < birthDate) {
       
         if (userData.messages < 1) {
-            ctx.sendMessage('Aún falta un poquito para tu cumpleaños, paciencia')
+            ctx.reply('Aún falta un poquito para tu cumpleaños, paciencia')
             userData.messages++
         }  else {
         const response = await limitRespomse()
-        ctx.sendMessage(response);
+        ctx.reply(response);
     }
 }
 
@@ -89,7 +89,7 @@ bot.on('message', async (ctx) => {
                 host: 'translate.google.com'
             })
             ctx.replyWithAudio(url);
-            ctx.sendMessage('A partir de hoy empieza el juego. Para conocer más sobre las sorpesas que te esperan este mes tienes derecho a una pregunta cada día hasta que se te indique que el juego a finalizado')
+            ctx.reply('A partir de hoy empieza el juego. Para conocer más sobre las sorpesas que te esperan este mes tienes derecho a una pregunta cada día hasta que se te indique que el juego a finalizado')
             userData.messages++
         } else if (userData.messages < 2 && userData.messages > 0) {
             const response = await createResponse()
@@ -124,7 +124,7 @@ bot.on('message', async (ctx) => {
     if (formatDate == format(new Date(2025, 1, 4), 'yyyy-MM-dd')) {
 
         if (userData.messages < 1) {
-            ctx.sendMessage('Hoy es sabado, quizás deberías ir pensando en un look para esta noche')
+            ctx.reply('Hoy es sabado, quizás deberías ir pensando en un look para esta noche')
             userData.messages++
         } else {
             const response = await limitRespomse()
@@ -139,7 +139,7 @@ bot.on('message', async (ctx) => {
        
         if (userData.messages < 1) {
 
-            ctx.sendMessage('Hoy es la cabalgata de reies, no tengo tiempo de darte mas pistas')
+            ctx.reply('Hoy es la cabalgata de reies, no tengo tiempo de darte mas pistas')
             userData.messages++
         } else {
             const response = await limitRespomse()
@@ -170,7 +170,7 @@ bot.on('message', async (ctx) => {
     if (formatDate == format(new Date(2025, 1, 10), 'yyyy-MM-dd')) {
         
         if (userData.messages < 1) {
-            ctx.sendMessage('Esta tarde tienes una misión, preparar una maleta. En algún momento del día recibiras más instrucciones.')
+            ctx.reply('Esta tarde tienes una misión, preparar una maleta. En algún momento del día recibiras más instrucciones.')
             userData.messages++
 
         } else {
