@@ -2,7 +2,7 @@ const express = require('express');
 const { Telegraf } = require('telegraf');
 const googleTTS = require('google-tts-api');
 const { format } = require('date-fns');
-const { createResponse } = require('./gpt');
+const { createResponse, limitRespomse } = require('./gpt');
 
 require('dotenv').config();
 
@@ -31,15 +31,23 @@ bot.on('message', async (ctx) => {
     console.log(formatDate, formatbirthDate)
 
 
-
-    if (messages < 1) {
-        // mensaje antes de la fecha
-        if (date < birthDate) {
+    // mensaje antes de la fecha
+    if (date < birthDate) {
+        const messages = 0
+        if (messages < 1) {
             ctx.sendMessage('Aún falta un poquito para tu cumpleaños, paciencia')
+            messages++
         }
+    } else {
+        const response = await limitRespomse
+        console.log(messages)
+        ctx.reply(response);
+    }
 
-        //mensaje el dia de la fehca
-        if (formatDate == formatbirthDate) {
+    //mensaje el dia de la fehca
+    if (formatDate == formatbirthDate) {
+        const message = 0
+        if (message < 1) {
             const url = googleTTS.getAudioUrl('Feliz cumpleaños', {
                 lang: 'es',
                 slow: false,
@@ -47,52 +55,102 @@ bot.on('message', async (ctx) => {
             })
             ctx.replyWithAudio(url);
             ctx.sendMessage('A partir de hoy empieza el juego. Para conocer más sobre las sorpesas que te esperan este mes tienes derecho a una pregunta cada día hasta que se te indique que el juego a finalizado')
-        }
-
-        //mensaje despues de la fecha
-
-        if (formatDate < format(new Date(2025, 1, 4), 'yyyy-MM-dd') && formatDate > format(new Date(2025, 1, 1), 'yyyy-MM-dd')) {
-
+            messages++
+        } else if (message < 2 && message > 0) {
             const response = await createResponse
             console.log(messages)
             ctx.reply(response);
-        }
-
-        // mensaje el día 04
-
-        if (formatDate == format(new Date(2025, 1, 4), 'yyyy-MM-dd')) {
-            ctx.sendMessage('Hoy es sabado, quizás deberías ir pensando en un look para esta noche')
-        }
-
-        // mensaje el día 05
-
-        if (formatDate == format(new Date(2025, 1, 5), 'yyyy-MM-dd')) {
-            ctx.sendMessage('Hoy es la cabalgata de reies, no tengo tiempo de darte mas pistas')
-        }
-
-        // mensaje del día 5 al 10
-
-        if (formatDate == format(new Date(2025, 1, 5), 'yyyy-MM-dd')) {
-            const response = await createResponse
+            messages++
+        } else {
+            const response = await limitRespomse
             console.log(messages)
             ctx.reply(response);
         }
-
-        // mensaje el día 10
-
-        if (formatDate == format(new Date(2025, 1, 10), 'yyyy-MM-dd')) {
-            ctx.sendMessage('Esta tarde tienes una misión, preparar una maleta. En algún momento del día recibiras más instrucciones.')
-        }
-
-        // Continuara...
-
-
-
-        messages++
-
-    } else {
-        ctx.sendMessage('Solo puedes hacer una pregunta al día')
     }
+
+    //mensaje despues de la fecha
+
+    if (formatDate < format(new Date(2025, 1, 4), 'yyyy-MM-dd') && formatDate > format(new Date(2025, 1, 1), 'yyyy-MM-dd')) {
+        const messages = 0
+        if (messages < 1) {
+            const response = await createResponse
+            console.log(messages)
+            ctx.reply(response);
+            messages++
+        } else {
+            const response = await limitRespomse
+            console.log(messages)
+            ctx.reply(response);
+        }
+    }
+
+    // mensaje el día 04
+
+    if (formatDate == format(new Date(2025, 1, 4), 'yyyy-MM-dd')) {
+        const messages = 0
+        if (messages < 1) {
+            ctx.sendMessage('Hoy es sabado, quizás deberías ir pensando en un look para esta noche')
+            messages++
+        } else {
+            const response = await limitRespomse
+            console.log(messages)
+            ctx.reply(response);
+        }
+    }
+
+    // mensaje el día 05
+
+    if (formatDate == format(new Date(2025, 1, 5), 'yyyy-MM-dd')) {
+        const messages = 0
+        if (messages < 1) {
+
+            ctx.sendMessage('Hoy es la cabalgata de reies, no tengo tiempo de darte mas pistas')
+            messages++
+        } else {
+            const response = await limitRespomse
+            console.log(messages)
+            ctx.reply(response);
+        }
+    }
+
+    // mensaje del día 5 al 10
+
+    if (formatDate == format(new Date(2025, 1, 5), 'yyyy-MM-dd')) {
+        const messages = 0
+        if (messages < 1) {
+            const response = await createResponse
+            console.log(messages)
+            ctx.reply(response);
+            messages++
+
+        } else {
+            const response = await limitRespomse
+            console.log(messages)
+            ctx.reply(response);
+        }
+    }
+
+    // mensaje el día 10
+
+    if (formatDate == format(new Date(2025, 1, 10), 'yyyy-MM-dd')) {
+        const messages = 0
+        if (messages < 1) {
+            ctx.sendMessage('Esta tarde tienes una misión, preparar una maleta. En algún momento del día recibiras más instrucciones.')
+            messages++
+
+        } else {
+            const response = await limitRespomse
+            console.log(messages)
+            ctx.reply(response);
+        }
+    }
+
+    // Continuara...
+
+
+
+
+
 
 })
 
