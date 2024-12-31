@@ -48,11 +48,11 @@ bot.on('message', async (ctx) => {
         if (messages < 1) {
             ctx.sendMessage('Aún falta un poquito para tu cumpleaños, paciencia')
             messages++
-        }
-    } else {
+        }  else {
         const response = await limitRespomse()
         ctx.sendMessage(response);
     }
+}
 
     //mensaje el dia de la fehca
     if (formatDate == formatbirthDate) {
