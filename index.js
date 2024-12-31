@@ -23,7 +23,7 @@ bot.command('test', (ctx) => {
 
 let messages = 0
 
-bot.command(/\/start/, (ctx) => {
+bot.start( (ctx) => {
  
     const welcomeMessage = `
     ¡Hola, ${ctx.chat.first_name || 'usuario'}! 👋
