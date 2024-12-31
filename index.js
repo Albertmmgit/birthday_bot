@@ -21,7 +21,7 @@ bot.command('test', (ctx) => {
     ctx.reply('ok')
 })
 
-let messages = 0
+const userMessages = {};
 
 bot.command(/\/start/, (ctx) => {
  
