@@ -65,7 +65,7 @@ bot.on('message', async (ctx) => {
                 host: 'translate.google.com'
             })
             ctx.replyWithAudio(url);
-            ctx.sendMessage('A partir de hoy empieza el juego. Para conocer más sobre las sorpesas que te esperan este mes tienes derecho a una pregunta cada día hasta que se te indique que el juego a finalizado')
+            ctx.sendMessage('A partir de hoy empieza el juego de tu cumpleaños. Este Enero será un mes lleno de sorpresas, para saber más tienes derecho a una pregunta cada día hasta que se te indique que el juego a finalizado')
             messages++
         } else if (messages < 2 && messages > 0) {
             const response = await createResponse()
@@ -171,5 +171,6 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log('Servidor conectado')
+    const date = new Date()
+    console.log('Servidor conectado', date)
 })
