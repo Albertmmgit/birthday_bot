@@ -45,7 +45,7 @@ bot.on('message', async (ctx) => {
 
       
         if (messages < 1) {
-            ctx.sendMessage('El fin de semana siempre es buen momento para probar cosas...Un cóctel exotico, una comida de vanguardia, descubrir un sitio nuevo...paciencia, ya queda poco para conocer tu primera sorpresa')
+            ctx.sendMessage('Hoy es sábado y mas que una pista te voy a dar una sugerencia...deberías ir pensando un super look para esta noche, no cres?')
             messages++
         }  else if (messages = 1) {
         const response = await createResponse()
