@@ -45,7 +45,7 @@ bot.on('message', async (ctx) => {
 
       
         if (messages < 1) {
-            ctx.sendMessage('Hoy es sábado y mas que una pista te voy a dar una sugerencia...deberías ir pensando un super look para esta noche, no cres?')
+            ctx.sendMessage('Vamos a descansar un poco que ahora vienen los reyes y ya tenemos suficiente lio')
             messages++
         }  else if (messages = 1) {
         const response = await createResponse()
