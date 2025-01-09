@@ -45,7 +45,7 @@ bot.on('message', async (ctx) => {
 
       
         if (messages < 1) {
-            ctx.sendMessage('Hoy tienes una misión que cumplir. Debes tener algo de estreno para celebrar la ocasión como se merece. Para ello tendrás que encontrar un sobre rojo...')
+            ctx.sendMessage('Hoy descanso...')
             messages++
         }  else if (messages = 1) {
         const response = await createResponse()
