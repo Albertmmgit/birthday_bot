@@ -45,7 +45,7 @@ bot.on('message', async (ctx) => {
 
       
         if (messages < 1) {
-            ctx.sendMessage('Ya falta poco para ver las estrellas...')
+            ctx.sendMessage('Toda aventura comienza con una pequeña excursión...')
             messages++
         }  else if (messages = 1) {
         const response = await createResponse()
