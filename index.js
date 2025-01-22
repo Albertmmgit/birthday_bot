@@ -45,7 +45,7 @@ bot.on('message', async (ctx) => {
 
       
         if (messages < 1) {
-            ctx.sendMessage('Toda aventura comienza con una pequeña excursión...')
+            ctx.sendMessage('Todavía no puedes saber donde vas, pero el fin de semana terminara en una ciudad medieval')
             messages++
         }  else if (messages = 1) {
         const response = await createResponse()
